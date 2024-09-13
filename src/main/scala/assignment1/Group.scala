@@ -1,28 +1,32 @@
 package assignment1
 
-class Group[T]:
+class Group[T] {
   private var contents = List[T]()
 
   def add(x: T): Unit = {
-    if !has(x)
-    then contents = ???
+    if (!has(x)) {
+      contents = x :: contents 
+    }
   }
 
   def delete(x: T): Unit = {
-    contents = ???
+    contents = contents.filterNot(_ == x) 
   }
 
   def has(x: T): Boolean = {
-    ???
+    contents.contains(x) 
   }
+}
 
-object Group:
+object Group {
   def from[T](xs: Iterable[T]): Group[T] = {
-    var result = Group[T]
-    for x <- xs do
-      ???
+    val result = new Group[T]
+    for (x <- xs) {
+      result.add(x) 
+    }
     result
   }
+}
 
 @main def test() = {
   val group = Group.from(List(10, 20))
