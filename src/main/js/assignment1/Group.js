@@ -1,28 +1,28 @@
 class Group {
-    #contents;
+    mySet;
 
     constructor() {
-        this.#contents = [];
+        this.mySet = [];
     }
 
     has(x) {
-        return undefined;
+        return this.mySet.includes(x);
     }
 
     add(x) {
         if (!this.has(x)) {
-            undefined;
+            this.mySet.push(x);
         }
     }
 
     delete(x) {
-        this.#contents = undefined;
+        this.mySet = this.mySet.filter(item => item !== x);;
     }
 
     static from(it) {
         let result = new Group();
         for (let x of it) {
-            undefined;
+            result.add(x);
         }
         return result;
     }
